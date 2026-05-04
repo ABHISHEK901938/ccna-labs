@@ -1,0 +1,45 @@
+! =========================
+! Device: R1
+! Topic: IOS CLI Basics
+! =========================
+
+enable
+
+! Enter Global Configuration Mode
+configure terminal
+
+! Change Hostname
+hostname R1
+
+! Configure Interface
+interface gigabitethernet 0/0
+ no shutdown
+ exit
+
+! =========================
+! Verification Commands
+! =========================
+
+do show ip interface brief
+do show running-config
+do show startup-config
+
+! =========================
+! Save Configuration
+! =========================
+
+end
+copy running-config startup-config
+
+! =========================
+! Backup Configuration
+! =========================
+
+! Backup to Flash
+copy running-config flash:
+
+! Backup to TFTP Server
+copy running-config tftp:
+! Enter:
+! Address: 10.10.10.10
+! Filename: R1-config
